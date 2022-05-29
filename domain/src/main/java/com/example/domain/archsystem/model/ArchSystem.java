@@ -12,9 +12,16 @@ public class ArchSystem {
 
     private String name;
 
+    private Architecture architecture;
+
     private Instant createdAt;
 
     private Instant updatedAt;
+
+    public void setArchitecture(Architecture architecture) {
+        this.architecture = architecture;
+        this.updatedAt = Instant.now();
+    }
 
     public static ArchSystem build(String name) {
         ArchSystem archSystem = new ArchSystem();

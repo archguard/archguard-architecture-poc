@@ -2,6 +2,7 @@ package com.example.api.service;
 
 import com.example.api.usecase.CreateArchSystemCase;
 import com.example.api.usecase.GetArchSystemCase;
+import com.example.api.usecase.UpdateArchitectureCase;
 import com.example.domain.archsystem.model.ArchSystem;
 import com.example.domain.archsystem.service.ArchSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class ArchSystemApplicationService {
         ArchSystem archSystem = archSystemService.get(id);
 
         return GetArchSystemCase.Response.from(archSystem);
+    }
+
+    public UpdateArchitectureCase.Response updateArchitecture(String id, UpdateArchitectureCase.Request request) {
+        ArchSystem archSystem = archSystemService.updateArchitecture(id, request.getArchStyle());
+
+        return UpdateArchitectureCase.Response.from(archSystem);
     }
 }
