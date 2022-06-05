@@ -3,10 +3,14 @@ package com.example.api.service;
 import com.example.api.usecase.CreateArchSystemCase;
 import com.example.api.usecase.GetArchSystemCase;
 import com.example.api.usecase.UpdateArchitectureCase;
+import com.example.domain.archsystem.model.ArchComponent;
 import com.example.domain.archsystem.model.ArchSystem;
 import com.example.domain.archsystem.service.ArchSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ArchSystemApplicationService {
@@ -26,7 +30,13 @@ public class ArchSystemApplicationService {
     }
 
     public UpdateArchitectureCase.Response updateArchitecture(String id, UpdateArchitectureCase.Request request) {
-        ArchSystem archSystem = archSystemService.updateArchitecture(id, request.getArchStyle());
+        List<ArchComponent> archComponents = request.getArchComponents().stream()
+                .map(archComponentRequest -> ArchComponent.build(
+                        id, archComponentRequest.getName(), archComponentRequest.getArchComponentType())
+                )
+                .collect(Collectors.toList());
+
+        ArchSystem archSystem = archSystemService.updateArchitecture(id, request.getArchStyle(), archComponents);
 
         return UpdateArchitectureCase.Response.from(archSystem);
     }
