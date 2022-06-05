@@ -4,6 +4,8 @@ import com.example.domain.archsystem.exception.ArchSystemException;
 import com.example.domain.archsystem.model.ArchComponent;
 import com.example.domain.archsystem.model.ArchSystem;
 import com.example.domain.archsystem.model.Architecture;
+import com.example.domain.archsystem.repository.ArchComponentPO;
+import com.example.domain.archsystem.repository.ArchComponentRepository;
 import com.example.domain.archsystem.repository.ArchSystemPO;
 import com.example.domain.archsystem.repository.ArchSystemRepository;
 import com.example.domain.archsystem.repository.ArchitecturePO;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ArchSystemService {
@@ -19,6 +22,8 @@ public class ArchSystemService {
     private ArchSystemRepository archSystemRepository;
     @Autowired
     private ArchitectureRepository architectureRepository;
+    @Autowired
+    private ArchComponentRepository archComponentRepository;
 
     public ArchSystem create(String name) {
         ArchSystem archSystem = ArchSystem.build(name);
@@ -46,6 +51,9 @@ public class ArchSystemService {
         archSystem.setArchitecture(architecture);
 
         architectureRepository.save(ArchitecturePO.from(architecture));
+        archComponentRepository.deleteByArchSystemId(id);
+        archComponentRepository
+                .saveAll(archComponents.stream().map(ArchComponentPO::from).collect(Collectors.toList()));
         archSystemRepository.save(ArchSystemPO.from(archSystem));
 
         return archSystem;

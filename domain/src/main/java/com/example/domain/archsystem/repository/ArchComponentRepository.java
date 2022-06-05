@@ -16,9 +16,17 @@ public class ArchComponentRepository {
                 .collect(Collectors.toList());
     }
 
-    public ArchComponentPO create(ArchComponentPO architecturePO) {
-        archComponentPOs.add(architecturePO);
+    public List<ArchComponentPO> saveAll(List<ArchComponentPO> needSavedArchComponentPOs) {
+        archComponentPOs.addAll(needSavedArchComponentPOs);
 
-        return architecturePO;
+        return needSavedArchComponentPOs;
+    }
+
+    public void deleteByArchSystemId(String archSystemId) {
+        List<ArchComponentPO> needDeletedArchComponentPOs = archComponentPOs.stream()
+                .filter(archComponentPO -> archComponentPO.getArchSystemId().equals(archSystemId))
+                .collect(Collectors.toList());
+
+        archComponentPOs.removeAll(needDeletedArchComponentPOs);
     }
 }
