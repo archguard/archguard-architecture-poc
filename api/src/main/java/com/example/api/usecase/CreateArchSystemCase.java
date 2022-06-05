@@ -25,12 +25,10 @@ public class CreateArchSystemCase {
     @Builder
     public static class Response {
         private String id;
-        private String name;
 
         public static Response from(ArchSystem archSystem) {
             return Response.builder()
                     .id(archSystem.getId())
-                    .name(archSystem.getName())
                     .build();
         }
     }

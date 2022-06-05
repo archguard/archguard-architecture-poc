@@ -13,16 +13,20 @@ public class Architecture {
 
     private List<ArchComponent> archComponents;
 
+    private List<ArchComponentConnection> archComponentConnections;
+
     public enum ArchStyle {
         LAYERED
     }
 
-    public static Architecture build(String archSystemId, ArchStyle archStyle, List<ArchComponent> archComponents) {
+    public static Architecture build(String archSystemId, ArchStyle archStyle, List<ArchComponent> archComponents,
+                                     List<ArchComponentConnection> archComponentConnections) {
         Architecture architecture = new Architecture();
 
         architecture.archSystemId = archSystemId;
         architecture.archStyle = archStyle;
         architecture.archComponents = archComponents;
+        architecture.archComponentConnections = archComponentConnections;
 
         return architecture;
     }

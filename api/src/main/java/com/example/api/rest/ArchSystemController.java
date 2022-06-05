@@ -36,9 +36,9 @@ public class ArchSystemController {
     }
 
     @PutMapping("/{id}")
-    public UpdateArchitectureCase.Response updateArchitecture(
+    public void updateArchitecture(
             @PathVariable String id,
             @RequestBody @Valid UpdateArchitectureCase.Request request) {
-        return applicationService.updateArchitecture(id, request);
+        applicationService.updateArchitecture(id, request);
     }
 }

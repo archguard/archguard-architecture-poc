@@ -4,6 +4,7 @@ import com.example.api.usecase.CreateArchSystemCase;
 import com.example.api.usecase.GetArchSystemCase;
 import com.example.api.usecase.UpdateArchitectureCase;
 import com.example.domain.archsystem.model.ArchComponent;
+import com.example.domain.archsystem.model.ArchComponentConnection;
 import com.example.domain.archsystem.model.ArchSystem;
 import com.example.domain.archsystem.service.ArchSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,20 @@ public class ArchSystemApplicationService {
         return GetArchSystemCase.Response.from(archSystem);
     }
 
-    public UpdateArchitectureCase.Response updateArchitecture(String id, UpdateArchitectureCase.Request request) {
+    public void updateArchitecture(String id, UpdateArchitectureCase.Request request) {
         List<ArchComponent> archComponents = request.getArchComponents().stream()
                 .map(archComponentRequest -> ArchComponent.build(
                         id, archComponentRequest.getName(), archComponentRequest.getArchComponentType())
                 )
                 .collect(Collectors.toList());
 
-        ArchSystem archSystem = archSystemService.updateArchitecture(id, request.getArchStyle(), archComponents);
+        List<ArchComponentConnection> archComponentConnections = request.getArchComponentConnections().stream()
+                .map(archComponentConnectionRequest -> ArchComponentConnection
+                        .build(id, archComponentConnectionRequest.getSource(),
+                                archComponentConnectionRequest.getTarget()))
+                .collect(Collectors.toList());
 
-        return UpdateArchitectureCase.Response.from(archSystem);
+        ArchSystem archSystem = archSystemService
+                .updateArchitecture(id, request.getArchStyle(), archComponents, archComponentConnections);
     }
 }
