@@ -1,4 +1,6 @@
 rootProject.name = 'archguard-architecture-poc'
 include 'bootsrap'
 include 'api'
+include 'application'
 include 'domain'
+include 'infrastructure'

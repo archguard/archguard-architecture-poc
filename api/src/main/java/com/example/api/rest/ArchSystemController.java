@@ -1,14 +1,9 @@
 package com.example.api.rest;
 
-import com.example.api.service.ArchSystemApplicationService;
-import com.example.api.usecase.CreateArchSystemCase;
-import com.example.api.usecase.GetArchSystemCase;
-import com.example.api.usecase.UpdateArchitectureCase;
+import com.example.ArchSystemApplicationService;
+import com.example.usecase.CreateArchSystemCase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -28,17 +23,5 @@ public class ArchSystemController {
     @ResponseStatus(CREATED)
     public CreateArchSystemCase.Response create(@RequestBody @Valid CreateArchSystemCase.Request request) {
         return applicationService.create(request);
-    }
-
-    @GetMapping("/{id}")
-    public GetArchSystemCase.Response getDetail(@PathVariable String id) {
-        return applicationService.getDetail(id);
-    }
-
-    @PutMapping("/{id}")
-    public void updateArchitecture(
-            @PathVariable String id,
-            @RequestBody @Valid UpdateArchitectureCase.Request request) {
-        applicationService.updateArchitecture(id, request);
     }
 }

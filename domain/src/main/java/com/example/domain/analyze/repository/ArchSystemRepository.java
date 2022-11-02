@@ -1,22 +1,16 @@
 package com.example.domain.analyze.repository;
 
+import com.example.domain.analyze.model.ArchSystem;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ArchSystemRepository {
-    private final Map<String, ArchSystemPO> archSystemPOMap = new HashMap<>();
+public interface ArchSystemRepository {
+    Optional<ArchSystem> getById(String id);
 
-    public Optional<ArchSystemPO> getById(String id) {
-        return Optional.ofNullable(archSystemPOMap.get(id));
-    }
+    List<ArchSystem> findAll();
 
-    public ArchSystemPO save(ArchSystemPO archSystemPO) {
-        archSystemPOMap.put(archSystemPO.getId(), archSystemPO);
-
-        return archSystemPO;
-    }
+    void save(ArchSystem archSystem);
 }

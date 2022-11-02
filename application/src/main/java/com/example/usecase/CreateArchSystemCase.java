@@ -1,4 +1,4 @@
-package com.example.api.usecase;
+package com.example.usecase;
 
 import com.example.domain.analyze.model.ArchSystem;
 import lombok.AllArgsConstructor;
