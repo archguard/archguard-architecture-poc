@@ -1,11 +1,13 @@
 package com.example.domain.analyze.model;
 
+import com.example.domain.common.Aggregate;
 import lombok.Getter;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Getter
+@Aggregate
 public class ArchSystem {
     private String id;
 
