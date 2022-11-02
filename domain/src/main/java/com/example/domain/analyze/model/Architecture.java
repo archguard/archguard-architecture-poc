@@ -1,4 +1,4 @@
-package com.example.domain.archsystem.model;
+package com.example.domain.analyze.model;
 
 import lombok.Getter;
 

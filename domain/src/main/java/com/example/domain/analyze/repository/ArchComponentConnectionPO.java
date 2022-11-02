@@ -1,6 +1,6 @@
-package com.example.domain.archsystem.repository;
+package com.example.domain.analyze.repository;
 
-import com.example.domain.archsystem.model.ArchComponentConnection;
+import com.example.domain.analyze.model.ArchComponentConnection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

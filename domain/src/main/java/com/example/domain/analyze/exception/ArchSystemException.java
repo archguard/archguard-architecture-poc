@@ -1,4 +1,4 @@
-package com.example.domain.archsystem.exception;
+package com.example.domain.analyze.exception;
 
 import com.example.domain.common.BaseException;
 

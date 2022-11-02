@@ -3,10 +3,10 @@ package com.example.api.service;
 import com.example.api.usecase.CreateArchSystemCase;
 import com.example.api.usecase.GetArchSystemCase;
 import com.example.api.usecase.UpdateArchitectureCase;
-import com.example.domain.archsystem.model.ArchComponent;
-import com.example.domain.archsystem.model.ArchComponentConnection;
-import com.example.domain.archsystem.model.ArchSystem;
-import com.example.domain.archsystem.service.ArchSystemService;
+import com.example.domain.analyze.model.ArchComponent;
+import com.example.domain.analyze.model.ArchComponentConnection;
+import com.example.domain.analyze.model.ArchSystem;
+import com.example.domain.analyze.service.ArchSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.example.api.usecase.common;
 
-import com.example.domain.archsystem.model.ArchComponent;
+import com.example.domain.analyze.model.ArchComponent;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

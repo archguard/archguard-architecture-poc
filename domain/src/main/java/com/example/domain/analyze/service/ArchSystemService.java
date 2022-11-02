@@ -1,18 +1,18 @@
-package com.example.domain.archsystem.service;
+package com.example.domain.analyze.service;
 
-import com.example.domain.archsystem.exception.ArchSystemException;
-import com.example.domain.archsystem.model.ArchComponent;
-import com.example.domain.archsystem.model.ArchComponentConnection;
-import com.example.domain.archsystem.model.ArchSystem;
-import com.example.domain.archsystem.model.Architecture;
-import com.example.domain.archsystem.repository.ArchComponentConnectionPO;
-import com.example.domain.archsystem.repository.ArchComponentConnectionRepository;
-import com.example.domain.archsystem.repository.ArchComponentPO;
-import com.example.domain.archsystem.repository.ArchComponentRepository;
-import com.example.domain.archsystem.repository.ArchSystemPO;
-import com.example.domain.archsystem.repository.ArchSystemRepository;
-import com.example.domain.archsystem.repository.ArchitecturePO;
-import com.example.domain.archsystem.repository.ArchitectureRepository;
+import com.example.domain.analyze.exception.ArchSystemException;
+import com.example.domain.analyze.model.ArchComponent;
+import com.example.domain.analyze.model.ArchComponentConnection;
+import com.example.domain.analyze.model.ArchSystem;
+import com.example.domain.analyze.model.Architecture;
+import com.example.domain.analyze.repository.ArchComponentConnectionPO;
+import com.example.domain.analyze.repository.ArchComponentConnectionRepository;
+import com.example.domain.analyze.repository.ArchComponentPO;
+import com.example.domain.analyze.repository.ArchComponentRepository;
+import com.example.domain.analyze.repository.ArchSystemPO;
+import com.example.domain.analyze.repository.ArchSystemRepository;
+import com.example.domain.analyze.repository.ArchitecturePO;
+import com.example.domain.analyze.repository.ArchitectureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

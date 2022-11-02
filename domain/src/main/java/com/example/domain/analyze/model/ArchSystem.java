@@ -1,6 +1,6 @@
-package com.example.domain.archsystem.model;
+package com.example.domain.analyze.model;
 
-import com.example.domain.archsystem.repository.ArchSystemPO;
+import com.example.domain.analyze.repository.ArchSystemPO;
 import lombok.Getter;
 
 import java.time.Instant;

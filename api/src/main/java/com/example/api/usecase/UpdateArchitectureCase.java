@@ -2,7 +2,7 @@ package com.example.api.usecase;
 
 import com.example.api.usecase.common.ArchComponentConnectionRequest;
 import com.example.api.usecase.common.ArchComponentRequest;
-import com.example.domain.archsystem.model.Architecture;
+import com.example.domain.analyze.model.Architecture;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

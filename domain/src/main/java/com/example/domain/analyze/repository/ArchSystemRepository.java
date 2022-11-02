@@ -1,4 +1,4 @@
-package com.example.domain.archsystem.repository;
+package com.example.domain.analyze.repository;
 
 import org.springframework.stereotype.Repository;
 

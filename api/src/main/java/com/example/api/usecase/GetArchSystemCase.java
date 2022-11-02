@@ -1,6 +1,6 @@
 package com.example.api.usecase;
 
-import com.example.domain.archsystem.model.ArchSystem;
+import com.example.domain.analyze.model.ArchSystem;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
