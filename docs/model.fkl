@@ -1,0 +1,50 @@
+ContextMap architecture {
+    Context analyze {
+        Aggregate ArchSystem {
+            Struct {
+                id: String
+                name: String
+                architecture: Architecture
+            }
+            Entity Architecture {
+                Struct {
+                    style: ArchStyle
+                    components: List<ArchComponent>
+                    connections: List<ArchComponentConnection>
+                    liner: ArchLinter
+                }
+            }
+
+            Entity ArchComponent {
+                Struct {
+                    name: String
+                    type: ArchComponentType
+                }
+            }
+
+            Entity ArchComponent {
+                Struct {
+                    source: String
+                    target: String
+                }
+            }
+
+            Entity ArchLinter {
+            }
+        }
+    }
+
+    Context scan {
+        Aggregate ScanInfo {
+            Struct {
+                repoType: RepoType
+                repo: String
+                branch: String
+                language: Language
+                scanStatus: ScanStatus
+                startTime: Instant
+                endTime: Instant
+            }
+        }
+    }
+}
