@@ -1,1 +1,23 @@
 # archguard-architecture-poc
+
+- 模型验证
+  - 数据存储
+    - [ ] memory 实现 Repository
+    - [ ] Mysql 实现 Repository
+    - [ ] MongoDB 实现 Repositoy
+  - 架构风格实现
+    - [ ] 分层架构
+    - [ ] DDD 六边形架构
+    - [ ] 微服务架构
+    - [ ] ......
+  - 架构规则
+    - [ ] DSL
+    - [ ] 流水线集成
+- 工具集成
+  - [ ] 扫描工具
+  - [ ] 分析工具
+  - [ ] 评估？
+  - [ ] 预测？
+  - [ ] 视图？
+- 服务拆分
+  - [ ] 按领域拆分？
