@@ -1,5 +1,6 @@
 package com.example.domain.analyze.model;
 
+import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.common.Entity;
 import lombok.Getter;
 
@@ -16,5 +17,16 @@ public class Architecture {
 
     public enum ArchStyle {
         LAYERED
+    }
+
+    public static Architecture build(UpdateArchitectureCommand command) {
+        Architecture architecture = new Architecture();
+
+        architecture.archStyle = command.getArchStyle();
+        // todo check archComponents and archComponentConnections match
+        architecture.archComponents = command.getArchComponents();
+        architecture.archComponentConnections = command.getArchComponentConnections();
+
+        return architecture;
     }
 }

@@ -1,27 +1,20 @@
 package com.example.usecase;
 
 import com.example.domain.analyze.model.ArchSystem;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
 
 public class CreateArchSystemCase {
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
+    @Data
     public static class Request {
         @NotBlank
         private String name;
     }
 
-    @Getter
-    @Setter
+    @Data
     @Builder
     public static class Response {
         private String id;

@@ -10,9 +10,19 @@ public class ArchComponent {
 
     private String name;
 
-    private ArchComponentType archComponentType;
+    private Type type;
 
-    public enum ArchComponentType {
+    public enum Type {
         MODULE
+    }
+
+    public static ArchComponent build(String id, String name, ArchComponent.Type type) {
+        ArchComponent archComponent = new ArchComponent();
+
+        archComponent.id = id;
+        archComponent.name = name;
+        archComponent.type = type;
+
+        return archComponent;
     }
 }

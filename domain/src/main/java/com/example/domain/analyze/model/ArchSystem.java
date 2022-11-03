@@ -1,5 +1,6 @@
 package com.example.domain.analyze.model;
 
+import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.common.Aggregate;
 import lombok.Getter;
 
@@ -21,5 +22,9 @@ public class ArchSystem {
         archSystem.name = name;
 
         return archSystem;
+    }
+
+    public void updateArchitecture(UpdateArchitectureCommand command) {
+        this.architecture = Architecture.build(command);
     }
 }
