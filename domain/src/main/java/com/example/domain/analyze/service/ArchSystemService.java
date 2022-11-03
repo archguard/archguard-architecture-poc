@@ -12,8 +12,11 @@ public class ArchSystemService {
     @Autowired
     private ArchSystemRepository archSystemRepository;
 
-    private ArchSystem getById(String id) {
+    private ArchSystem _getById(String id) {
         return archSystemRepository.getById(id).orElseThrow(ArchSystemException::notFound);
+    }
+    public ArchSystem getById(String id) {
+        return _getById(id);
     }
 
     public ArchSystem create(String name) {
@@ -25,7 +28,7 @@ public class ArchSystemService {
     }
 
     public void updateArchitecture(String id, UpdateArchitectureCommand command) {
-        ArchSystem archSystem = getById(id);
+        ArchSystem archSystem = _getById(id);
 
         archSystem.updateArchitecture(command);
 

@@ -26,19 +26,16 @@ public class UpdateArchitectureCase {
         private List<ArchComponentConnectionDTO> archComponentConnections;
 
         public static UpdateArchitectureCommand to(Request request) {
-            UpdateArchitectureCommand command = new UpdateArchitectureCommand();
-
-            command.setArchStyle(request.getArchStyle());
-            command.setArchComponents(request.archComponents.stream()
-                    .map(dto -> ArchComponent.build(dto.getId(), dto.getName(), dto.getType()))
-                    .collect(Collectors.toList())
-            );
-            command.setArchComponentConnections(request.archComponentConnections.stream()
-                    .map(dto -> ArchComponentConnection.build(dto.getSource(), dto.getTarget()))
-                    .collect(Collectors.toList())
-            );
-
-            return command;
+            return UpdateArchitectureCommand.builder().archStyle(request.getArchStyle()).archComponents(
+                    request.archComponents.stream()
+                            .map(dto -> ArchComponent.build(dto.getId(), dto.getName(), dto.getType()))
+                            .collect(Collectors.toList())
+                    )
+                    .archComponentConnections(request.archComponentConnections.stream()
+                            .map(dto -> ArchComponentConnection.build(dto.getSource(), dto.getTarget()))
+                            .collect(Collectors.toList())
+                    )
+                    .build();
         }
     }
 }
