@@ -21,6 +21,10 @@ public class Architecture {
 
     private ArchLinter archLinter;
 
+    public enum ArchStyle {
+        LAYERED, DDD, MICROSERVICE
+    }
+
     public static Architecture build(UpdateArchitectureCommand command) {
         checkArchComponentConnectionAvailable(command.getArchComponents(), command.getArchComponentConnections());
 
@@ -50,9 +54,5 @@ public class Architecture {
         }
 
 
-    }
-
-    public enum ArchStyle {
-        LAYERED
     }
 }
