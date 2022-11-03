@@ -15,6 +15,8 @@ public class Architecture {
 
     private List<ArchComponentConnection> archComponentConnections;
 
+    private ArchLinter archLinter;
+
     public enum ArchStyle {
         LAYERED
     }
