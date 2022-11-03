@@ -2,7 +2,8 @@
 
 - 模型验证
   - 数据存储
-    - [ ] memory 实现 Repository
+    - [x] memory 实现 Repository
+    - [ ] csv file 实现 Repository
     - [ ] Mysql 实现 Repository
     - [ ] MongoDB 实现 Repositoy
   - 架构风格实现
@@ -20,4 +21,4 @@
   - [ ] 预测？
   - [ ] 视图？
 - 服务拆分
-  - [ ] 按领域拆分？
+  - [ ] 按上下文拆分？

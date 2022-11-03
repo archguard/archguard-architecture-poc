@@ -13,7 +13,7 @@ public class ArchComponent {
     private Type type;
 
     public enum Type {
-        SERVICE, MODULE, CLASS,
+        SERVICE, MODULE, PACKAGE, CLASS,
     }
 
     public static ArchComponent build(String id, String name, ArchComponent.Type type) {
