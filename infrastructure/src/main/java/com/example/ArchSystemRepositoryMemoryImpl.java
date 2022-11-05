@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.domain.analyze.model.ArchSystem;
 import com.example.domain.analyze.repository.ArchSystemRepository;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,7 +12,8 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class ArchSystemRepositoryImpl implements ArchSystemRepository {
+@ConditionalOnProperty(name = "repository-impl", havingValue = "memory")
+public class ArchSystemRepositoryMemoryImpl implements ArchSystemRepository {
     private final Map<String, ArchSystem> archSystems = new HashMap<>();
 
     @Override
