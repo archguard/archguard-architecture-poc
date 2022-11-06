@@ -4,13 +4,11 @@ import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.common.Aggregate;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.experimental.FieldNameConstants;
 
 import java.util.UUID;
 
 @Getter
 @Aggregate
-@FieldNameConstants
 @ToString
 public class ArchSystem {
     private String id;

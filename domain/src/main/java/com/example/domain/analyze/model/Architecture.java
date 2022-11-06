@@ -4,6 +4,7 @@ import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.analyze.exception.ArchSystemException;
 import com.example.domain.common.Entity;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 
 @Getter
 @Entity
+@ToString
 public class Architecture {
     private ArchStyle archStyle;
 
@@ -20,10 +22,6 @@ public class Architecture {
     private List<ArchComponentConnection> archComponentConnections;
 
     private ArchLinter archLinter;
-
-    public enum ArchStyle {
-        LAYERED, DDD, MICROSERVICE
-    }
 
     public static Architecture build(UpdateArchitectureCommand command) {
         checkArchComponentConnectionAvailable(command.getArchComponents(), command.getArchComponentConnections());
@@ -54,5 +52,9 @@ public class Architecture {
         }
 
 
+    }
+
+    public enum ArchStyle {
+        LAYERED, DDD, MICROSERVICE
     }
 }

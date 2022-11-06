@@ -1,12 +1,9 @@
 package com.example.usecase;
 
 import com.example.domain.analyze.model.ArchSystem;
-import com.example.domain.analyze.model.Architecture;
 import com.example.usecase.common.ArchitectureDTO;
 import lombok.Builder;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 
 public class GetArchSystemCase {
@@ -19,6 +16,7 @@ public class GetArchSystemCase {
 
         private ArchitectureDTO architecture;
 
+        // todo mapstruct
         public static Response from(ArchSystem archSystem) {
             return Response.builder()
                     .id(archSystem.getId())
