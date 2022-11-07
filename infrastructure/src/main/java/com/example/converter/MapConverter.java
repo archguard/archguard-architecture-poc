@@ -5,33 +5,52 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapConverter {
-    public static <T> T mapToObj(Map source, Class<T> target) throws Exception {
-        Field[] fields = target.getDeclaredFields();
-        T o = target.getDeclaredConstructor().newInstance();
-        for (Field field : fields) {
-            Object val;
-            if ((val = source.get(field.getName())) != null) {
-                field.setAccessible(true);
-                field.set(o, val);
+    public static <T> T mapToObj(Map<String, String> source, Class<T> target) {
+        try {
+            Field[] fields = target.getDeclaredFields();
+            T o = target.getDeclaredConstructor().newInstance();
+            for (Field field : fields) {
+                Object val;
+                if ((val = source.get(field.getName())) != null) {
+                    field.setAccessible(true);
+                    field.set(o, val);
+                }
             }
+            return o;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return o;
     }
 
-    public static Map<String, Object> ObjToMap(Object obj, Object nullValue) throws IllegalAccessException {
-        Map<String, Object> map = new HashMap<>();
-        Class<?> cla = obj.getClass();
-        Field[] fields = cla.getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            String keyName = field.getName();
-            Object value = field.get(obj);
-            if (value == null) {
-                value = nullValue;
+    public static Map<String, String> ObjToMap(Object obj) {
+        try {
+            Map<String, String> map = new HashMap<>();
+            Class<?> cla = obj.getClass();
+            Field[] fields = cla.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String keyName = field.getName();
+                Object value = field.get(obj);
+                if (value == null) {
+                    value = "";
+                }
+                map.put(keyName, value.toString());
             }
-            map.put(keyName, value);
+            return map;
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
-        return map;
+
+    }
+
+    public static void putField(Object obj, String fieldName, Object fieldObj) {
+        try {
+            Field field = obj.getClass().getDeclaredField(fieldName);
+            field.setAccessible(true);
+            field.set(obj, fieldObj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

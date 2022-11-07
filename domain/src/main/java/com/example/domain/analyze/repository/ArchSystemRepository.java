@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ArchSystemRepository {
     Optional<ArchSystem> getById(String id);
 
-    List<ArchSystem> findAll();
-
     void save(ArchSystem archSystem);
+
+
 }

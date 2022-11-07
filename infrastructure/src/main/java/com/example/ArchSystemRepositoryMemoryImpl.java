@@ -22,11 +22,6 @@ public class ArchSystemRepositoryMemoryImpl implements ArchSystemRepository {
     }
 
     @Override
-    public List<ArchSystem> findAll() {
-        return new ArrayList<>(archSystems.values());
-    }
-
-    @Override
     public void save(ArchSystem archSystem) {
         archSystems.put(archSystem.getId(), archSystem);
     }

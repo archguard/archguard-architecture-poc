@@ -5,6 +5,7 @@ import com.example.domain.analyze.exception.ArchSystemException;
 import com.example.domain.common.Entity;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ import java.util.stream.Stream;
 @Getter
 @Entity
 @ToString
+@FieldNameConstants
 public class Architecture {
     private ArchStyle archStyle;
 

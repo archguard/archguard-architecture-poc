@@ -3,6 +3,8 @@ package com.example;
 import org.apache.commons.csv.CSVFormat;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ArchComponentCSVRepository extends CSVRepositoy{
     @Override
@@ -18,7 +20,12 @@ public class ArchComponentCSVRepository extends CSVRepositoy{
     }
 
     @Override
-    protected String getIdKey() {
-        return "id";
+    protected List<String> getAggregatePath() {
+        return List.of("arch_system_id");
+    }
+
+    @Override
+    protected List<String> getIdPath() {
+        return List.of("arch_system_id", "id");
     }
 }

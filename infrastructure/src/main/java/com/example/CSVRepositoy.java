@@ -17,14 +17,30 @@ public abstract class CSVRepositoy {
 
     protected abstract CSVFormat getCsvFormat();
 
-    protected abstract String getIdKey();
+    protected abstract List<String> getAggregatePath();
 
-    public Optional<CSVRecord> getById(String id) {
+    protected abstract List<String> getIdPath();
+
+    private boolean match(CSVRecord csvRecord, List<String> pathKey, String[] pathValue) {
+        System.out.println("aaa");
+        System.out.println(csvRecord.toMap());
+        System.out.println(pathKey);
+        System.out.println(pathValue);
+        for (int i = 0; i < pathKey.size(); i++) {
+            if (!csvRecord.get(pathKey.get(i)).equals(pathValue[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public Optional<CSVRecord> getById(String... pathValue) {
         try {
             Reader in = new FileReader(getFilePath());
             Iterable<CSVRecord> csvRecords = getCsvFormat().parse(in);
             for (CSVRecord csvRecord : csvRecords) {
-                if (csvRecord.get(getIdKey()).equals(id)) {
+                if (match(csvRecord, getIdPath(), pathValue)) {
                     return Optional.of(csvRecord);
                 }
             }
@@ -34,7 +50,7 @@ public abstract class CSVRepositoy {
         }
     }
 
-    public List<CSVRecord> findAll() {
+    public List<CSVRecord> findAllByAggregate(String... pathValue) {
         try {
             Reader in = new FileReader(getFilePath());
             Iterable<CSVRecord> csvRecords = CSVFormat.EXCEL.parse(in);
@@ -42,7 +58,9 @@ public abstract class CSVRepositoy {
             List<CSVRecord> csvRecordList = new ArrayList<>();
 
             for (CSVRecord csvRecord : csvRecords) {
-                csvRecordList.add(csvRecord);
+                if (match(csvRecord, getAggregatePath(), pathValue)) {
+                    csvRecordList.add(csvRecord);
+                }
             }
 
             return csvRecordList;

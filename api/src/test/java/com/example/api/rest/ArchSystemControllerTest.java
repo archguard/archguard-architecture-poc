@@ -53,15 +53,8 @@ class ArchSystemControllerTest extends TestBase {
         JSONObject json = new JSONObject();
         json.put("name", "any");
 
-        int count = archSystemRepository.findAll().size();
-
         mockMvc.perform(post("/arch-systems").contentType(APPLICATION_JSON).content(json.toJSONString()))
                 .andExpect(status().isCreated());
-
-        int updatedCount = archSystemRepository.findAll().size();
-
-        assertThat(updatedCount - count).isEqualTo(1);
-
     }
 
     @Test
