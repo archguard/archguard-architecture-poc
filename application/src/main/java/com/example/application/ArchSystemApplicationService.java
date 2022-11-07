@@ -1,10 +1,10 @@
-package com.example;
+package com.example.application;
 
+import com.example.application.usecase.CreateArchSystemCase;
+import com.example.application.usecase.GetArchSystemCase;
+import com.example.application.usecase.UpdateArchitectureCase;
 import com.example.domain.analyze.model.ArchSystem;
 import com.example.domain.analyze.service.ArchSystemService;
-import com.example.usecase.CreateArchSystemCase;
-import com.example.usecase.GetArchSystemCase;
-import com.example.usecase.UpdateArchitectureCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

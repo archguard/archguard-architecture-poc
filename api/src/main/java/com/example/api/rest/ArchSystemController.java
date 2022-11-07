@@ -1,9 +1,9 @@
 package com.example.api.rest;
 
-import com.example.ArchSystemApplicationService;
-import com.example.usecase.CreateArchSystemCase;
-import com.example.usecase.GetArchSystemCase;
-import com.example.usecase.UpdateArchitectureCase;
+import com.example.application.ArchSystemApplicationService;
+import com.example.application.usecase.CreateArchSystemCase;
+import com.example.application.usecase.GetArchSystemCase;
+import com.example.application.usecase.UpdateArchitectureCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

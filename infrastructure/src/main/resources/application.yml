@@ -1,1 +1,7 @@
 repository-impl: memory
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3308/architecture
+    username: root
+    password: root

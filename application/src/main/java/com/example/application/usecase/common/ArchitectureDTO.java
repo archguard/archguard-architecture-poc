@@ -1,4 +1,4 @@
-package com.example.usecase.common;
+package com.example.application.usecase.common;
 
 import com.example.domain.analyze.model.Architecture;
 import lombok.Builder;

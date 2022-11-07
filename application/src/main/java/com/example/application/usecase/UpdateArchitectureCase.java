@@ -1,11 +1,11 @@
-package com.example.usecase;
+package com.example.application.usecase;
 
 import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
-import com.example.usecase.common.ArchComponentConnectionDTO;
-import com.example.usecase.common.ArchComponentDTO;
+import com.example.application.usecase.common.ArchComponentConnectionDTO;
+import com.example.application.usecase.common.ArchComponentDTO;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

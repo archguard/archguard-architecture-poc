@@ -2,7 +2,6 @@ package com.example.domain.analyze.model;
 
 import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.analyze.exception.ArchSystemException;
-import com.example.domain.common.Entity;
 import lombok.Getter;
 import lombok.ToString;
 import lombok.experimental.FieldNameConstants;
@@ -13,7 +12,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Getter
-@Entity
 @ToString
 @FieldNameConstants
 public class Architecture {

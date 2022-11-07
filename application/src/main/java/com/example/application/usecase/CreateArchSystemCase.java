@@ -1,27 +1,27 @@
-package com.example.usecase;
+package com.example.application.usecase;
 
 import com.example.domain.analyze.model.ArchSystem;
-import com.example.usecase.common.ArchitectureDTO;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 
-public class GetArchSystemCase {
+
+public class CreateArchSystemCase {
+    @Data
+    public static class Request {
+        @NotBlank
+        private String name;
+    }
+
     @Data
     @Builder
     public static class Response {
         private String id;
 
-        private String name;
-
-        private ArchitectureDTO architecture;
-
-        // todo mapstruct
         public static Response from(ArchSystem archSystem) {
             return Response.builder()
                     .id(archSystem.getId())
-                    .name(archSystem.getName())
-                    .architecture(ArchitectureDTO.from(archSystem.getArchitecture()))
                     .build();
         }
     }
