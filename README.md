@@ -3,9 +3,9 @@
 - 模型验证
   - 数据存储
     - [x] memory 实现 Repository
-    - [ ] csv file 实现 Repository
     - [ ] Mysql 实现 Repository
     - [ ] MongoDB 实现 Repositoy
+    - [ ] Redis 实现 Repository
   - 架构风格实现
     - [ ] 分层架构
     - [ ] DDD 六边形架构

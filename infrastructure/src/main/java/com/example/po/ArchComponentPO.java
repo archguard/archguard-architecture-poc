@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Data
 @Entity
 public class ArchComponentPO {
+    private String archSystemId;
     @Id
     private String id;
 
