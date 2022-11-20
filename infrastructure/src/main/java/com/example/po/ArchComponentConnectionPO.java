@@ -4,11 +4,14 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Entity
+@Table(name = "arch_component_connection")
 public class ArchComponentConnectionPO {
     private String archSystemId;
+
     @Id
     private String id;
 

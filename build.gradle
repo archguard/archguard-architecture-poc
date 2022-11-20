@@ -38,6 +38,9 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.flywaydb:flyway-core'
 
+        compile "org.mapstruct:mapstruct:1.5.2.Final"
+        annotationProcessor "org.mapstruct:mapstruct-processor:1.5.2.Final"
+
         compileOnly 'org.projectlombok:lombok'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -47,8 +50,6 @@ subprojects {
         runtime 'mysql:mysql-connector-java'
         compile "org.flywaydb:flyway-mysql"
 
-        compile "org.mapstruct:mapstruct:1.5.2.Final"
-        annotationProcessor "org.mapstruct:mapstruct-processor:1.5.2.Final"
     }
 
     test {

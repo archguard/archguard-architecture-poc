@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ArchSystemRepository {
     Optional<ArchSystem> getById(String id);
-    void save(ArchSystem archSystem);
+    String save(ArchSystem archSystem);
     void delete(ArchSystem archSystem);
 
     Architecture getArchitecture(String id);

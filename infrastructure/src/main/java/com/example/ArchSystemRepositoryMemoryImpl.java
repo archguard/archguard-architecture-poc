@@ -38,9 +38,10 @@ public class ArchSystemRepositoryMemoryImpl implements ArchSystemRepository {
     }
 
     @Override
-    public void save(ArchSystem archSystem) {
+    public String save(ArchSystem archSystem) {
         ArchSystemPO archSystemPO = ArchSystemConverter.INSTANCE.to(archSystem);
         archSystemRepository.put(archSystem.getId(), archSystemPO);
+        return archSystem.getId();
     }
 
     @Override

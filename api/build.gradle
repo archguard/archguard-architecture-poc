@@ -5,4 +5,6 @@ repositories {
 dependencies {
     implementation project(':domain')
     implementation project(':application')
+
+    testImplementation 'com.h2database:h2:1.4.200'
 }

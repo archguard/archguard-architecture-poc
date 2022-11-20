@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ArchSystemRepository extends CrudRepository<ArchSystemPO, String> {
+public interface ArchSystemCrudRepository extends CrudRepository<ArchSystemPO, String> {
 }
