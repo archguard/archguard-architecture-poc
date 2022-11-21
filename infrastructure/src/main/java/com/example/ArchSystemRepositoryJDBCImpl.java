@@ -86,6 +86,17 @@ public class ArchSystemRepositoryJDBCImpl implements ArchSystemRepository {
     }
 
     @Override
+    public void addArchComponents(String id, List<ArchComponent> archComponents) {
+        List<ArchComponentPO> archComponentPOList = archComponents.stream()
+                .map(ArchSystemConverter.INSTANCE::to)
+                .collect(Collectors.toList());
+
+        archComponentPOList.forEach(archComponentPO -> archComponentPO.setArchSystemId(id));
+
+        archComponentCrudRepository.saveAll(archComponentPOList);
+    }
+
+    @Override
     public void updateArchComponent(String id, ArchComponent archComponent) {
         ArchComponentPO archComponentPO = ArchSystemConverter.INSTANCE.to(archComponent);
         archComponentPO.setArchSystemId(id);
@@ -107,8 +118,11 @@ public class ArchSystemRepositoryJDBCImpl implements ArchSystemRepository {
 
     @Override
     public void addArchComponentConnections(String id, List<ArchComponentConnection> archComponentConnections) {
-        List<ArchComponentConnectionPO> archComponentConnectionPOs =
-                archComponentConnections.stream().map(ArchSystemConverter.INSTANCE::to).collect(Collectors.toList());
+        List<ArchComponentConnectionPO> archComponentConnectionPOs = archComponentConnections.stream()
+                .map(ArchSystemConverter.INSTANCE::to)
+                .collect(Collectors.toList());
+
+        archComponentConnectionPOs.forEach(archComponentConnectionPO -> archComponentConnectionPO.setArchSystemId(id));
 
         archComponentConnectionCrudRepository.saveAll(archComponentConnectionPOs);
     }

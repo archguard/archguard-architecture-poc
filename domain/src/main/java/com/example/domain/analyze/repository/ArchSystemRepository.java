@@ -19,6 +19,7 @@ public interface ArchSystemRepository {
     void updateArchitecture(String id, Architecture architecture);
 
     List<ArchComponent> getArchComponents(String id);
+    void addArchComponents(String id, List<ArchComponent> archComponents);
     void updateArchComponent(String id, ArchComponent archComponent);
     void deleteArchComponent(String id, ArchComponent archComponent);
 

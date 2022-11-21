@@ -87,6 +87,18 @@ public class ArchSystemRepositoryMemoryImpl implements ArchSystemRepository {
     }
 
     @Override
+    public void addArchComponents(String id, List<ArchComponent> archComponents) {
+        List<ArchComponentPO> archComponentPOList = archComponents.stream()
+                .map(ArchSystemConverter.INSTANCE::to)
+                .collect(Collectors.toList());
+
+        for (ArchComponentPO archComponentPO : archComponentPOList) {
+            archComponentPO.setArchSystemId(id);
+            archComponentRepository.put(archComponentPO.getId(), archComponentPO);
+        }
+    }
+
+    @Override
     public void updateArchComponent(String id, ArchComponent archComponent) {
         String archComponentId = archComponent.getId();
         ArchComponentPO archComponentPO = ArchSystemConverter.INSTANCE.to(archComponent);

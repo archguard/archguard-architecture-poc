@@ -2,12 +2,14 @@ package com.example.domain.analyze.model;
 
 import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.OneToOne;
 
 @Getter
+@Setter
 @ToString
 @FieldNameConstants
 public class ArchSystem {

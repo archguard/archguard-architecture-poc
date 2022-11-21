@@ -1,9 +1,11 @@
 package com.example.domain.analyze.model;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
+@Setter
 @ToString
 public class ArchComponent {
     private String id;
