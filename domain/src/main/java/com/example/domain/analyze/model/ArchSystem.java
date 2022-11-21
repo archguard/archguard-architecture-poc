@@ -6,13 +6,13 @@ import lombok.ToString;
 import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.OneToOne;
-import java.util.UUID;
 
 @Getter
 @ToString
 @FieldNameConstants
 public class ArchSystem {
     private String id;
+
 
     private String name;
 
@@ -22,7 +22,6 @@ public class ArchSystem {
     public static ArchSystem build(String name) {
         ArchSystem archSystem = new ArchSystem();
 
-        archSystem.id = UUID.randomUUID().toString();
         archSystem.name = name;
 
         return archSystem;

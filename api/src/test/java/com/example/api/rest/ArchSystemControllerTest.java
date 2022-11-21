@@ -1,15 +1,14 @@
 package com.example.api.rest;
 
 import com.example.TestBase;
+import com.example.application.usecase.common.ArchComponentConnectionDTO;
+import com.example.application.usecase.common.ArchComponentDTO;
 import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
-import com.example.domain.analyze.model.ArchSystem;
 import com.example.domain.analyze.model.Architecture;
 import com.example.domain.analyze.repository.ArchSystemRepository;
 import com.example.domain.analyze.service.ArchSystemService;
-import com.example.application.usecase.common.ArchComponentConnectionDTO;
-import com.example.application.usecase.common.ArchComponentDTO;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +58,7 @@ class ArchSystemControllerTest extends TestBase {
 
     @Test
     void should_update_architecture() throws Exception {
-        ArchSystem archSystem = archSystemService.create("any");
+        String id = archSystemService.create("any");
 
         JSONObject json = new JSONObject();
         json.put("archStyle", "LAYERED");
@@ -72,41 +71,43 @@ class ArchSystemControllerTest extends TestBase {
 
 
         mockMvc.perform(
-                        put("/arch-systems/" + archSystem.getId()).contentType(APPLICATION_JSON).content(json.toJSONString()))
+                        put("/arch-systems/" + id).contentType(APPLICATION_JSON).content(json.toJSONString()))
                 .andExpect(status().isOk());
 
-        ArchSystem updatedArchSystem = archSystemRepository.getById(archSystem.getId()).get();
-        Architecture architecture = updatedArchSystem.getArchitecture();
+        Architecture architecture = archSystemRepository.getArchitecture(id);
         assertThat(architecture).isNotNull();
         assertThat(architecture.getArchStyle()).isEqualTo(Architecture.ArchStyle.LAYERED);
-        assertThat(architecture.getArchComponents()).hasSize(2);
-        assertThat(architecture.getArchComponentConnections()).hasSize(1);
+        List<ArchComponent> archComponents = archSystemRepository.getArchComponents(id);
+        assertThat(archComponents).hasSize(2);
+        List<ArchComponentConnection> archComponentConnections = archSystemRepository.getArchComponentConnections(id);
+        assertThat(archComponentConnections).hasSize(1);
     }
 
     @Test
     void should_get_arch_system() throws Exception {
-        ArchSystem archSystem = archSystemService.create("any");
+        String id = archSystemService.create("any");
 
-        mockMvc.perform(get("/arch-systems/" + archSystem.getId())).andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value(archSystem.getName()));
+        mockMvc.perform(get("/arch-systems/" + id)).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("any"));
     }
 
     @Test
     void should_get_arch_system_with_architecture() throws Exception {
-        ArchSystem archSystem = archSystemService.create("any");
+        String id = archSystemService.create("any");
 
         ArchComponent archComponent1 = ArchComponent.build("id-1", "name-1", ArchComponent.Type.MODULE);
         ArchComponent archComponent2 = ArchComponent.build("id-1", "name-1", ArchComponent.Type.MODULE);
-        ArchComponentConnection archComponentConnection = ArchComponentConnection.build(archComponent1.getId(), archComponent2.getId());
+        ArchComponentConnection archComponentConnection =
+                ArchComponentConnection.build(archComponent1.getId(), archComponent2.getId());
         UpdateArchitectureCommand updateArchitectureCommand = UpdateArchitectureCommand.builder()
                 .archStyle(Architecture.ArchStyle.LAYERED)
                 .archComponents(List.of(archComponent1, archComponent2))
                 .archComponentConnections(List.of(archComponentConnection))
                 .build();
-        archSystemService.updateArchitecture(archSystem.getId(), updateArchitectureCommand);
+        archSystemService.updateArchitecture(id, updateArchitectureCommand);
 
-        mockMvc.perform(get("/arch-systems/" + archSystem.getId())).andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value(archSystem.getName()))
+        mockMvc.perform(get("/arch-systems/" + id)).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("any"))
                 .andExpect(jsonPath("$.architecture.archStyle").value(updateArchitectureCommand.getArchStyle().name()))
                 .andExpect(jsonPath("$.architecture.archComponents", hasSize(2)))
                 .andExpect(jsonPath("$.architecture.archComponentConnections", hasSize(1)));

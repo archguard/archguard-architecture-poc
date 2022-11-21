@@ -19,12 +19,10 @@ public class ArchSystemService {
         return _getById(id);
     }
 
-    public ArchSystem create(String name) {
+    public String create(String name) {
         ArchSystem archSystem = ArchSystem.build(name);
 
-        archSystemRepository.save(archSystem);
-
-        return archSystem;
+        return archSystemRepository.save(archSystem);
     }
 
     public void updateArchitecture(String id, UpdateArchitectureCommand command) {
@@ -32,7 +30,7 @@ public class ArchSystemService {
 
         archSystem.updateArchitecture(command);
 
-        archSystemRepository.save(archSystem);
+        archSystemRepository.updateArchitecture(id, archSystem.getArchitecture());
     }
 
 }

@@ -19,9 +19,9 @@ public class CreateArchSystemCase {
     public static class Response {
         private String id;
 
-        public static Response from(ArchSystem archSystem) {
+        public static Response from(String id) {
             return Response.builder()
-                    .id(archSystem.getId())
+                    .id(id)
                     .build();
         }
     }
