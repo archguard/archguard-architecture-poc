@@ -96,7 +96,7 @@ class ArchSystemControllerTest extends TestBase {
         String id = archSystemService.create("any");
 
         ArchComponent archComponent1 = ArchComponent.build("id-1", "name-1", ArchComponent.Type.MODULE);
-        ArchComponent archComponent2 = ArchComponent.build("id-1", "name-1", ArchComponent.Type.MODULE);
+        ArchComponent archComponent2 = ArchComponent.build("id-2", "name-2", ArchComponent.Type.MODULE);
         ArchComponentConnection archComponentConnection =
                 ArchComponentConnection.build(archComponent1.getId(), archComponent2.getId());
         UpdateArchitectureCommand updateArchitectureCommand = UpdateArchitectureCommand.builder()
