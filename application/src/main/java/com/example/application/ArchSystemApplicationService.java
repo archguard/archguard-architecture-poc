@@ -30,7 +30,7 @@ public class ArchSystemApplicationService {
 
     public GetArchSystemCase.Response getArchSystem(String id) {
         ArchSystem archSystem = archSystemService.getById(id);
-        Architecture architecture = architectureService.getById(id);
+        Architecture architecture = architectureService.getByArchSystemId(id);
 
         return GetArchSystemCase.Response.from(archSystem, architecture);
     }

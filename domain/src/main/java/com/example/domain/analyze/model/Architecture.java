@@ -9,6 +9,7 @@ import lombok.experimental.FieldNameConstants;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,6 +18,9 @@ import java.util.stream.Stream;
 @ToString
 @FieldNameConstants
 public class Architecture {
+    private String archSystemId;
+
+    private String id;
     private ArchStyle archStyle;
 
     private List<ArchComponent> archComponents;
@@ -25,11 +29,13 @@ public class Architecture {
 
     private ArchLinter archLinter;
 
-    public static Architecture build(UpdateArchitectureCommand command) {
+    public static Architecture build(String archSystemId, UpdateArchitectureCommand command) {
         checkArchComponentConnectionAvailable(command.getArchComponents(), command.getArchComponentConnections());
 
         Architecture architecture = new Architecture();
 
+        architecture.setArchSystemId(archSystemId);
+        architecture.setId(UUID.randomUUID().toString());
         architecture.archStyle = command.getArchStyle();
         architecture.archComponents = command.getArchComponents();
         architecture.archComponentConnections = command.getArchComponentConnections();

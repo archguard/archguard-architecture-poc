@@ -13,8 +13,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "architecture")
 public class ArchitecturePO {
-    @Id
     private String archSystemId;
+
+    @Id
+    private String id;
+
 
     @Enumerated(EnumType.STRING)
     private Architecture.ArchStyle archStyle;

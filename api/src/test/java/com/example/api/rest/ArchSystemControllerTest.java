@@ -8,6 +8,7 @@ import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
 import com.example.domain.analyze.repository.ArchSystemRepository;
+import com.example.domain.analyze.repository.ArchitectureRepository;
 import com.example.domain.analyze.service.ArchSystemService;
 import com.example.domain.analyze.service.ArchitectureService;
 import net.minidev.json.JSONObject;
@@ -28,6 +29,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ArchSystemControllerTest extends TestBase {
     @Autowired
     private ArchSystemRepository archSystemRepository;
+
+    @Autowired
+    private ArchitectureRepository architectureRepository;
 
     @Autowired
     private ArchSystemService archSystemService;
@@ -78,12 +82,12 @@ class ArchSystemControllerTest extends TestBase {
                         put("/arch-systems/" + id).contentType(APPLICATION_JSON).content(json.toJSONString()))
                 .andExpect(status().isOk());
 
-        Architecture architecture = archSystemRepository.getArchitecture(id);
+        Architecture architecture = architectureRepository.getByArchSystemId(id).get();
         assertThat(architecture).isNotNull();
         assertThat(architecture.getArchStyle()).isEqualTo(Architecture.ArchStyle.LAYERED);
-        List<ArchComponent> archComponents = archSystemRepository.getArchComponents(id);
+        List<ArchComponent> archComponents = architectureRepository.getArchComponents(id);
         assertThat(archComponents).hasSize(2);
-        List<ArchComponentConnection> archComponentConnections = archSystemRepository.getArchComponentConnections(id);
+        List<ArchComponentConnection> archComponentConnections = architectureRepository.getArchComponentConnections(id);
         assertThat(archComponentConnections).hasSize(1);
     }
 

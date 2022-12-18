@@ -6,20 +6,21 @@ import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
 import com.example.domain.analyze.repository.ArchSystemRepository;
+import com.example.domain.analyze.repository.ArchitectureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArchitectureService {
     @Autowired
-    private ArchSystemRepository archSystemRepository;
+    private ArchitectureRepository architectureRepository;
 
-    public Architecture getById(String id) {
-        Architecture architecture = archSystemRepository.getArchitecture(id);
+    public Architecture getByArchSystemId(String archSystemId) {
+        Architecture architecture = architectureRepository.getByArchSystemId(archSystemId).orElse(null);
         if (architecture != null) {
-            List<ArchComponent> archComponents = archSystemRepository.getArchComponents(id);
+            List<ArchComponent> archComponents = architectureRepository.getArchComponents(archSystemId);
             List<ArchComponentConnection> archComponentConnections =
-                    archSystemRepository.getArchComponentConnections(id);
+                    architectureRepository.getArchComponentConnections(archSystemId);
             architecture.setArchComponents(archComponents);
             architecture.setArchComponentConnections(archComponentConnections);
         }
@@ -28,11 +29,11 @@ public class ArchitectureService {
     }
 
     public void create(String archSystemId, UpdateArchitectureCommand command) {
-        Architecture architecture = Architecture.build(command);
+        Architecture architecture = Architecture.build(archSystemId, command);
 
-        archSystemRepository.updateArchitecture(archSystemId, architecture);
-        archSystemRepository.addArchComponents(archSystemId, architecture.getArchComponents());
-        archSystemRepository.addArchComponentConnections(archSystemId, architecture.getArchComponentConnections());
+        architectureRepository.save(architecture);
+        architectureRepository.addArchComponents(archSystemId, architecture.getArchComponents());
+        architectureRepository.addArchComponentConnections(archSystemId, architecture.getArchComponentConnections());
     }
 
 }

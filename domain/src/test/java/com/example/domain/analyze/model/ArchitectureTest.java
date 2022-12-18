@@ -21,7 +21,7 @@ class ArchitectureTest {
         ArchComponentConnection archComponentConnection = ArchComponentConnection.build("id-any", "id-1");
         command.setArchComponentConnections(List.of(archComponentConnection));
 
-        assertThrows(BaseException.class, () -> Architecture.build(command));
+        assertThrows(BaseException.class, () -> Architecture.build("arch-system-id", command));
     }
 
 }
