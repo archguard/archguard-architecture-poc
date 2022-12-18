@@ -9,6 +9,7 @@ import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
 import com.example.domain.analyze.repository.ArchSystemRepository;
 import com.example.domain.analyze.service.ArchSystemService;
+import com.example.domain.analyze.service.ArchitectureService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ class ArchSystemControllerTest extends TestBase {
 
     @Autowired
     private ArchSystemService archSystemService;
+
+    @Autowired
+    private ArchitectureService architectureService;
 
     private ArchComponentDTO buidSimpleArchComponentDTO(String id) {
         return ArchComponentDTO.builder()
@@ -104,7 +108,7 @@ class ArchSystemControllerTest extends TestBase {
                 .archComponents(List.of(archComponent1, archComponent2))
                 .archComponentConnections(List.of(archComponentConnection))
                 .build();
-        archSystemService.updateArchitecture(id, updateArchitectureCommand);
+        architectureService.create(id, updateArchitectureCommand);
 
         mockMvc.perform(get("/arch-systems/" + id)).andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("any"))

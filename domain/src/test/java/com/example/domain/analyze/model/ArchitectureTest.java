@@ -12,8 +12,9 @@ class ArchitectureTest {
 
     @Test
     void should_build_architecture_fail_when_connection_source_not_in_component() {
-        UpdateArchitectureCommand command = new UpdateArchitectureCommand();
-        command.setArchStyle(Architecture.ArchStyle.LAYERED);
+        UpdateArchitectureCommand command = UpdateArchitectureCommand.builder()
+                .archStyle(Architecture.ArchStyle.LAYERED)
+                .build();
 
         ArchComponent archComponent = ArchComponent.build("id-1", "name-1", ArchComponent.Type.MODULE);
         command.setArchComponents(List.of(archComponent));

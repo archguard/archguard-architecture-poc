@@ -22,14 +22,6 @@ public class ArchSystemService {
     }
     public ArchSystem getById(String id) {
         ArchSystem archSystem = _getById(id);
-        Architecture architecture = archSystemRepository.getArchitecture(id);
-        if (architecture != null) {
-            List<ArchComponent> archComponents = archSystemRepository.getArchComponents(id);
-            List<ArchComponentConnection> archComponentConnections = archSystemRepository.getArchComponentConnections(id);
-            architecture.setArchComponents(archComponents);
-            architecture.setArchComponentConnections(archComponentConnections);
-            archSystem.setArchitecture(architecture);
-        }
         return archSystem;
     }
 
@@ -37,16 +29,6 @@ public class ArchSystemService {
         ArchSystem archSystem = ArchSystem.build(name);
 
         return archSystemRepository.save(archSystem);
-    }
-
-    public void updateArchitecture(String id, UpdateArchitectureCommand command) {
-        ArchSystem archSystem = _getById(id);
-
-        archSystem.updateArchitecture(command);
-
-        archSystemRepository.updateArchitecture(id, archSystem.getArchitecture());
-        archSystemRepository.addArchComponents(id, archSystem.getArchitecture().getArchComponents());
-        archSystemRepository.addArchComponentConnections(id, archSystem.getArchitecture().getArchComponentConnections());
     }
 
 }
