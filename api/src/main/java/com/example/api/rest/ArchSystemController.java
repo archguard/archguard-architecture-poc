@@ -30,15 +30,8 @@ public class ArchSystemController {
         return applicationService.createArchSystem(request);
     }
 
-    @PutMapping("/{id}")
-    public void updateArchitecture(@PathVariable String id,
-                                   @RequestBody @Valid UpdateArchitectureCase.Request request) {
-        applicationService.updateArchitecture(id, request);
-    }
-
     @GetMapping("/{id}")
     public GetArchSystemCase.Response getArchSystem(@PathVariable String id) {
-        // todo query model
         return applicationService.getArchSystem(id);
     }
 }

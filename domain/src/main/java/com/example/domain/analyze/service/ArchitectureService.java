@@ -28,12 +28,14 @@ public class ArchitectureService {
         return architecture;
     }
 
-    public void create(String archSystemId, UpdateArchitectureCommand command) {
+    public String create(String archSystemId, UpdateArchitectureCommand command) {
         Architecture architecture = Architecture.build(archSystemId, command);
 
-        architectureRepository.save(architecture);
+        String id = architectureRepository.save(architecture);
         architectureRepository.addArchComponents(archSystemId, architecture.getArchComponents());
         architectureRepository.addArchComponentConnections(archSystemId, architecture.getArchComponentConnections());
+
+        return id;
     }
 
 }
