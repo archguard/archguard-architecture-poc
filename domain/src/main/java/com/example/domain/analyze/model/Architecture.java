@@ -1,7 +1,7 @@
 package com.example.domain.analyze.model;
 
 import com.example.domain.analyze.command.UpdateArchitectureCommand;
-import com.example.domain.analyze.exception.ArchSystemException;
+import com.example.domain.archsystem.ArchSystemException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

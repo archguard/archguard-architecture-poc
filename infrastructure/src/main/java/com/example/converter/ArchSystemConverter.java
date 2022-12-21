@@ -2,7 +2,7 @@ package com.example.converter;
 
 import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
-import com.example.domain.analyze.model.ArchSystem;
+import com.example.domain.archsystem.ArchSystem;
 import com.example.domain.analyze.model.Architecture;
 import com.example.po.ArchComponentConnectionPO;
 import com.example.po.ArchComponentPO;

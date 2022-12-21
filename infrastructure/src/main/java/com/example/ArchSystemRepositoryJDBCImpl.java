@@ -2,8 +2,8 @@ package com.example;
 
 import java.util.Optional;
 import com.example.converter.ArchSystemConverter;
-import com.example.domain.analyze.model.ArchSystem;
-import com.example.domain.analyze.repository.ArchSystemRepository;
+import com.example.domain.archsystem.ArchSystem;
+import com.example.domain.archsystem.ArchSystemRepository;
 import com.example.po.ArchSystemPO;
 import com.example.repository.ArchSystemCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.domain.analyze.model;
+package com.example.domain.archsystem;
 
 import java.util.UUID;
 import lombok.Getter;

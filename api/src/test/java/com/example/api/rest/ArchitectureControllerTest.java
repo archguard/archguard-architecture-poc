@@ -16,7 +16,7 @@ import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
 import com.example.domain.analyze.repository.ArchitectureRepository;
-import com.example.domain.analyze.service.ArchSystemService;
+import com.example.domain.archsystem.ArchSystemService;
 import com.example.domain.analyze.service.ArchitectureService;
 import net.minidev.json.JSONObject;
 import org.junit.jupiter.api.Test;

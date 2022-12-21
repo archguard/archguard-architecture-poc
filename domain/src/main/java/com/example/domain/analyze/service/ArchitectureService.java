@@ -5,7 +5,6 @@ import com.example.domain.analyze.command.UpdateArchitectureCommand;
 import com.example.domain.analyze.model.ArchComponent;
 import com.example.domain.analyze.model.ArchComponentConnection;
 import com.example.domain.analyze.model.Architecture;
-import com.example.domain.analyze.repository.ArchSystemRepository;
 import com.example.domain.analyze.repository.ArchitectureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

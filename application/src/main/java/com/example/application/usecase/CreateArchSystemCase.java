@@ -1,6 +1,5 @@
 package com.example.application.usecase;
 
-import com.example.domain.analyze.model.ArchSystem;
 import lombok.Builder;
 import lombok.Data;
 

@@ -1,7 +1,6 @@
-package com.example.domain.analyze.repository;
+package com.example.domain.archsystem;
 
 import java.util.Optional;
-import com.example.domain.analyze.model.ArchSystem;
 import org.springframework.stereotype.Repository;
 
 @Repository
